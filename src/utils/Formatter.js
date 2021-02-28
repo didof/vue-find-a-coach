@@ -20,5 +20,31 @@ export default class Formatter {
     }, '');
   };
 
-  static fromKebabToCamelCase = () => {};
+  static fromKebabToCamelCase = input => {
+    let transformToUpperCase = false;
+    return input
+      .toLowerCase()
+      .split('')
+      .reduce((output, character, index) => {
+        switch (character) {
+          case '-':
+            transformToUpperCase = true;
+            break;
+          default:
+            if (index === 0) {
+              output += character.toUpperCase();
+              break;
+            }
+
+            if (transformToUpperCase) {
+              output += character.toUpperCase();
+              transformToUpperCase = false;
+            } else {
+              output += character;
+            }
+        }
+
+        return output;
+      }, '');
+  };
 }

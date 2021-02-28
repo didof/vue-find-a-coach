@@ -11,4 +11,4 @@ export { BaseCard, BaseButton, BaseBadge } from './ui';
 /**
  * --- COACHES ---
  */
-export { CoachItem } from './coaches';
+export { CoachItem, CoachFilter, CoachForm } from './coaches';

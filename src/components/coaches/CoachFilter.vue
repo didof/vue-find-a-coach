@@ -38,13 +38,13 @@
 
 <script>
 import { initialFilters } from '../../config';
+import { buildEventMap } from '../../utils';
 
-const EVENTS = {
-  changeFilter: 'change-filter'
-};
+const EVENTS_LIST = ['change-filter'];
+const EVENTS = buildEventMap(EVENTS_LIST);
 
 export default {
-  emits: Object.values(EVENTS),
+  emits: EVENTS_LIST,
   data() {
     return {
       filters: initialFilters
@@ -71,7 +71,7 @@ export default {
         []
       );
 
-      this.$emit(EVENTS.changeFilter, listFilters);
+      this.$emit(EVENTS.ChangeFilter, listFilters);
     }
   }
 };
