@@ -97,7 +97,7 @@ export default {
         rate: this.rate,
         areas: this.areas
       };
-      this.$emits(EVENTS.SaveData, formData);
+      this.$emit(EVENTS.SaveData, formData);
     }
   }
 };
