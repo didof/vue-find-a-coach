@@ -8,13 +8,13 @@
           Register as Coach
         </base-button>
       </div>
-      <ul v-if="hasCoaches">
+      <ul v-if="shouldRenderItems">
         <li v-for="coach in filteredCoaches" :key="coach.id">
           <coach-item
             :id="coach.id"
             :firstName="coach.firstName"
             :lastName="coach.lastName"
-            :rate="coach.rate"
+            :hourlyRate="coach.hourlyRate"
             :areas="coach.areas"
           ></coach-item>
         </li>
@@ -26,7 +26,6 @@
 
 <script>
 import { ns } from '../../store';
-import { initialFilters } from '../../config';
 
 import { CoachItem, CoachFilter } from '../../components/coaches';
 
@@ -37,12 +36,18 @@ export default {
   },
   data() {
     return {
-      activeFilters: initialFilters
+      activeFilters: ['frontend', 'backend', 'career']
     };
   },
   computed: {
     hasCoaches() {
       return this.$store.getters[`${ns.coaches}/hasCoaches`];
+    },
+    hasAtLeastOneFilter() {
+      return Object.values(this.activeFilters).length;
+    },
+    shouldRenderItems() {
+      return this.hasCoaches && this.hasAtLeastOneFilter;
     },
     filteredCoaches() {
       const coaches = this.$store.getters[`${ns.coaches}/coaches`];

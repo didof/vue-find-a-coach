@@ -22,10 +22,13 @@
 import BaseButton from '../ui/BaseButton.vue';
 export default {
   components: { BaseButton },
-  props: ['id', 'firstName', 'lastName', 'rate', 'areas'],
+  props: ['id', 'firstName', 'lastName', 'hourlyRate', 'areas'],
   computed: {
     fullName() {
       return `${this.firstName} ${this.lastName}`;
+    },
+    rate() {
+      return this.hourlyRate;
     },
     contactLink() {
       return `${this.$route.path}/${this.id}/contact`;
