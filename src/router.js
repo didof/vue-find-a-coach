@@ -5,16 +5,21 @@ import { CoachContact, RequestsReceived } from './pages/requests';
 import Catch from './pages/Catch.vue';
 
 const routes = [
-  { path: '/', redirect: '/coaches' },
-  { path: '/coaches', component: CoachesList },
+  { name: 'home', path: '/', redirect: '/coaches' },
+  { name: 'coaches-list', path: '/coaches', component: CoachesList },
   {
+    name: 'coach-detail',
     path: '/coaches/:id',
     component: CoachDetail,
     props: true,
     children: [{ path: 'contact', component: CoachContact }]
   },
-  { path: '/register', component: CoachRegistration },
-  { path: '/requests', component: RequestsReceived },
+  {
+    name: 'coach-registration',
+    path: '/register',
+    component: CoachRegistration
+  },
+  { name: 'requests-received', path: '/requests', component: RequestsReceived },
   { path: '/:catch(.*)', component: Catch }
 ];
 

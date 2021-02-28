@@ -4,7 +4,7 @@
     <base-card>
       <div class="controls">
         <base-button mode="outline">Refresh</base-button>
-        <base-button link :to="'/register'">
+        <base-button link :to="'/register'" v-if="!isAlreadyRegistered">
           Register as Coach
         </base-button>
       </div>
@@ -56,6 +56,9 @@ export default {
           Object.values(this.activeFilters).includes(area)
         );
       });
+    },
+    isAlreadyRegistered() {
+      return this.$store.getters[`${ns.coaches}/isCoach`];
     }
   },
   methods: {

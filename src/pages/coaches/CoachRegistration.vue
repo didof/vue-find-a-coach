@@ -22,6 +22,7 @@ export default {
   methods: {
     saveData(formData) {
       this.$store.dispatch(`${ns.coaches}/add`, formData);
+      this.$router.replace({ name: 'coaches-list' });
     }
   }
 };

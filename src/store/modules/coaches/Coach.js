@@ -1,6 +1,6 @@
 export default class Coach {
-  constructor(firstName, lastName, description, hourlyRate, areas) {
-    this.id = 'c' + Math.floor(Math.random() * 100);
+  constructor(id, firstName, lastName, description, hourlyRate, areas) {
+    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.areas = areas;

@@ -1,11 +1,13 @@
 <template>
   <header>
     <nav>
-      <h1><router-link to="/coaches">Find a coach</router-link></h1>
+      <h1><router-link :to="{ name: 'home' }">Find a coach</router-link></h1>
       <ul>
         <li>
-          <router-link to="/coaches">All Coaches</router-link>
-          <router-link to="/requests">Requests</router-link>
+          <router-link :to="{ name: 'coaches-list' }">All Coaches</router-link>
+          <router-link :to="{ name: 'requests-received' }"
+            >Requests</router-link
+          >
         </li>
       </ul>
     </nav>
