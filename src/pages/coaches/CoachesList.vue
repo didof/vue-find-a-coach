@@ -1,5 +1,5 @@
 <template>
-  <section>FILTER</section>
+  <coach-filter @change-filter="setFilters"></coach-filter>
   <section>
     <base-card>
       <div class="controls">
@@ -26,19 +26,36 @@
 
 <script>
 import { ns } from '../../store';
+import { initialFilters } from '../../config';
 
-import { CoachItem } from '../../components/coaches';
+import { CoachItem, CoachFilter } from '../../components/coaches';
 
 export default {
   components: {
-    CoachItem
+    CoachItem,
+    CoachFilter
+  },
+  data() {
+    return {
+      activeFilters: initialFilters
+    };
   },
   computed: {
     hasCoaches() {
       return this.$store.getters[`${ns.coaches}/hasCoaches`];
     },
     filteredCoaches() {
-      return this.$store.getters[`${ns.coaches}/coaches`];
+      const coaches = this.$store.getters[`${ns.coaches}/coaches`];
+      return coaches.filter(({ areas }) => {
+        return areas.some(area =>
+          Object.values(this.activeFilters).includes(area)
+        );
+      });
+    }
+  },
+  methods: {
+    setFilters(updatedFilters) {
+      this.activeFilters = updatedFilters;
     }
   }
 };
