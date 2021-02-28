@@ -48,7 +48,7 @@ export default {
       return this.coach.hourlyRate;
     },
     contactLink() {
-      return `${this.$route.path}/contact`;
+      return { name: 'coach-contact', params: { id: this.id } };
     },
     areas() {
       return this.coach.areas;

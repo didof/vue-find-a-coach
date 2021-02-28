@@ -12,7 +12,9 @@ const routes = [
     path: '/coaches/:id',
     component: CoachDetail,
     props: true,
-    children: [{ path: 'contact', component: CoachContact }]
+    children: [
+      { name: 'coach-contact', path: 'contact', component: CoachContact }
+    ]
   },
   {
     name: 'coach-registration',
