@@ -31,7 +31,7 @@ export default {
       return `${this.$route.path}/${this.id}/contact`;
     },
     detailsLink() {
-      return `${this.$route.path}/${this.id}/contact`;
+      return `${this.$route.path}/${this.id}`;
     }
   }
 };
