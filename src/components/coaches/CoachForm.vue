@@ -7,6 +7,7 @@
         id="firstname"
         name="firstname"
         v-model.trim="firstName.value"
+        @blur="clearValidity('firstName')"
       />
       <p v-if="firstNameIsValid">First name should be provided</p>
     </div>
@@ -17,6 +18,7 @@
         id="lastname"
         name="lastname"
         v-model.trim="lastName.value"
+        @blur="clearValidity('lastName')"
       />
       <p v-if="lastNameIsValid">Last name should be provided</p>
     </div>
@@ -27,12 +29,19 @@
         id="description"
         rows="5"
         v-model="description.value"
+        @blur="clearValidity('description')"
       ></textarea>
       <p v-if="descriptionIsValid">A description is required</p>
     </div>
     <div class="form-control" :class="rateClass">
       <label for="rate">Hourly Rate</label>
-      <input type="number" id="rate" name="rate" v-model.number="rate.value" />
+      <input
+        type="number"
+        id="rate"
+        name="rate"
+        v-model.number="rate.value"
+        @blur="clearValidity('rate')"
+      />
       <p v-if="rateIsValid">A rate/hour is requiered</p>
     </div>
     <div class="form-control" :class="areasClass">
@@ -44,6 +53,7 @@
           id="frontend"
           value="frontend"
           v-model="areas.value"
+          @blur="clearValidity('areas')"
         />
         <label for="frontend">Frontend Development</label>
       </div>
@@ -54,6 +64,7 @@
           id="backend"
           value="backend"
           v-model="areas.value"
+          @blur="clearValidity('areas')"
         />
         <label for="backend">Backend Development</label>
       </div>
@@ -64,6 +75,7 @@
           id="career"
           value="career"
           v-model="areas.value"
+          @blur="clearValidity('areas')"
         />
         <label for="career">Career Development</label>
       </div>
@@ -199,6 +211,9 @@ export default {
         if (exclude.includes(property)) return true;
         return this.$data[property].isValid;
       });
+    },
+    clearValidity(fieldName) {
+      this[fieldName].isValid = true;
     }
   }
 };
