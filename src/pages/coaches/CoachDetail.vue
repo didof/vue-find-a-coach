@@ -1,5 +1,32 @@
 <template>
-  <div>coach detail</div>
-  <router-link to="/coaches/c1/contact">Go to detail</router-link>
-  <router-view></router-view>
+  <section>
+    <base-card>
+      <template v-slot:header>
+        <h2>{{ fullName }}</h2>
+        <h3>${{ rate }}/hour</h3>
+      </template>
+    </base-card>
+  </section>
+  <section>
+    <base-card>
+      <h2>Interested? Reach out now!</h2>
+      <base-button link :to="contactLink">Contact</base-button>
+    </base-card>
+  </section>
 </template>
+
+<script>
+export default {
+  computed: {
+    fullName() {
+      return 'a';
+    },
+    rate() {
+      return 'a';
+    },
+    contactLink() {
+      return 'a';
+    }
+  }
+};
+</script>

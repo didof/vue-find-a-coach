@@ -1,8 +1,21 @@
 <template>
   <div class="card">
+    <header v-if="hasHeader">
+      <slot name="header"> </slot>
+    </header>
     <slot></slot>
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    hasHeader() {
+      return this.$slots.header;
+    }
+  }
+};
+</script>
 
 <style scoped>
 .card {
